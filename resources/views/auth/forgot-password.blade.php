@@ -1,36 +1,33 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('layouts.auth')
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+@section('content')
+    <section class="fxt-template-animation fxt-template-layout23" data-bg-image="{{ asset('admin/images/bg-1.png') }}">
+        <div class="fxt-bg-overlay" data-bg-image="{{ asset('admin/images/overlay.png') }}">
+            <div class="fxt-content">
+                <div class="fxt-header">
+                    <a href="login-23.html" class="fxt-logo"><img src="{{ asset('admin/images/logo.png') }}" alt="Logo"></a>
+                </div>
+                <div class="fxt-form">
+                    <p>Login into your account</p>
+                    <form action="PUT">
+                        <div class="form-group">
+                            <div class="fxt-transformY-50 fxt-transition-delay-1">
+                                <input type="email" id="email" class="form-control" name="email" placeholder="Email" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="fxt-transformY-50 fxt-transition-delay-4">
+                                <button type="submit" class="fxt-btn-fill">Send Me Email</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="fxt-footer">
+                    <div class="fxt-transformY-50 fxt-transition-delay-9">
+                        <p>Don't have an account?<a href="register-23.html" class="switcher-text2 inline-text">Register</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+    </section>
+@endsection
